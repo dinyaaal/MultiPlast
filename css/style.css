@@ -1584,6 +1584,28 @@ body::after {
   height: 100%;
 }
 
+.user-chat {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0.625rem;
+}
+
+.user-chat__image {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 2.5rem;
+          flex: 0 0 2.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.user-chat__name {
+  font-weight: 500;
+}
+
 .body-header {
   position: relative;
   z-index: 99;
@@ -4283,6 +4305,14 @@ body::after {
   gap: 1.875rem;
 }
 
+.block-chat__item .item-block-chat__image {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 3.1875rem;
+          flex: 0 0 3.1875rem;
+  width: 3.1875rem;
+  height: 3.1875rem;
+}
+
 .item-block-chat {
   cursor: pointer;
   width: 100%;
@@ -4296,11 +4326,6 @@ body::after {
 }
 
 .item-block-chat__image {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 3.1875rem;
-          flex: 0 0 3.1875rem;
-  width: 3.1875rem;
-  height: 3.1875rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4601,28 +4626,6 @@ body::after {
 .chat-top__back svg {
   width: 0.4375rem;
   height: 0.75rem;
-}
-
-.user-chat {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 0.625rem;
-}
-
-.user-chat__image {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 2.5rem;
-          flex: 0 0 2.5rem;
-  width: 2.5rem;
-  height: 2.5rem;
-}
-
-.user-chat__name {
-  font-weight: 500;
 }
 
 .actions-chat-top {
@@ -5778,7 +5781,7 @@ body::after {
             flex-direction: row;
   }
 
-  .item-block-chat__image {
+  .block-chat__item .item-block-chat__image {
     -webkit-box-flex: 0;
         -ms-flex: 0 0 3.9375rem;
             flex: 0 0 3.9375rem;
@@ -6135,6 +6138,10 @@ body::after {
     font-size: 1.5625rem;
   }
 
+  .user-chat__name {
+    font-size: 1.25rem;
+  }
+
   .body-header__block {
     gap: 2.1875rem;
   }
@@ -6217,10 +6224,6 @@ body::after {
 
   .chat-top {
     padding: 1.5625rem;
-  }
-
-  .user-chat__name {
-    font-size: 1.25rem;
   }
 
   .block-body-chat__date {
@@ -6324,6 +6327,10 @@ body::after {
     font-size: 1.125rem;
   }
 
+  .user-chat__name {
+    font-size: 1rem;
+  }
+
   .body-header__block {
     gap: 0.9375rem;
   }
@@ -6406,10 +6413,6 @@ body::after {
 
   .chat-top {
     padding: 0.9375rem;
-  }
-
-  .user-chat__name {
-    font-size: 1rem;
   }
 
   .block-body-chat__date {
@@ -6846,6 +6849,18 @@ body::after {
     }
 }
 
+@supports (font-size: clamp( 1rem , 0.9191919192rem  +  0.404040404vw , 1.25rem )) {
+    .user-chat__name {
+      font-size: clamp( 1rem , 0.9191919192rem  +  0.404040404vw , 1.25rem );
+    }
+}
+
+@supports not (font-size: clamp( 1rem , 0.9191919192rem  +  0.404040404vw , 1.25rem )) {
+    .user-chat__name {
+      font-size: calc(1rem + 0.25 * (100vw - 20rem) / 61.875);
+    }
+}
+
 @supports (gap: clamp( 0.9375rem , 0.533459596rem  +  2.0202020202vw , 2.1875rem )) {
     .body-header__block {
       gap: clamp( 0.9375rem , 0.533459596rem  +  2.0202020202vw , 2.1875rem );
@@ -7095,18 +7110,6 @@ body::after {
 @supports not (padding: clamp( 0.9375rem , 0.735479798rem  +  1.0101010101vw , 1.5625rem )) {
     .chat-top {
       padding: calc(0.9375rem + 0.625 * (100vw - 20rem) / 61.875);
-    }
-}
-
-@supports (font-size: clamp( 1rem , 0.9191919192rem  +  0.404040404vw , 1.25rem )) {
-    .user-chat__name {
-      font-size: clamp( 1rem , 0.9191919192rem  +  0.404040404vw , 1.25rem );
-    }
-}
-
-@supports not (font-size: clamp( 1rem , 0.9191919192rem  +  0.404040404vw , 1.25rem )) {
-    .user-chat__name {
-      font-size: calc(1rem + 0.25 * (100vw - 20rem) / 61.875);
     }
 }
 
