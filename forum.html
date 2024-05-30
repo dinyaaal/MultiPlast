@@ -397,347 +397,235 @@
 				</div>
 			</div>
 		</header>
-		<main class="page">
-			<section class="advertisement advertisement-contacts">
-				<div class="advertisement__container">
-
-					<div class="advertisement__tabs tabs-advertisement swiper">
-						<!-- Частина слайдера, що рухається -->
-						<div class="tabs-advertisement__wrapper swiper-wrapper">
-							<!-- Слайд -->
-							<div class="tabs-advertisement__block swiper-slide">
-								<div class="tabs-advertisement__title">Подати оголошення</div>
-								<select name="form[]" data-scroll="130" data-class-modif="input">
-									<option value="" data-class="select__placeholder" selected></option>
-									<option value="sell">Про продаж</option>
-									<option value="buy">Про купівлю</option>
-								</select>
-								<div class="tabs-advertisement__items">
-									<a href="#" class="tabs-advertisement__item active">Про продаж</a>
-									<a href="#" class="tabs-advertisement__item">Про купівлю</a>
-								</div>
-							</div>
-							<div class="tabs-advertisement__block swiper-slide">
-								<div class="tabs-advertisement__title">Мої оголошення</div>
-								<select name="form[]" data-scroll="130" data-class-modif="input">
-									<option value="" data-class="select__placeholder" selected></option>
-									<option value="my-sell">Мої оголошення про продаж</option>
-									<option value="my-buy">Мої оголошення про купівлю</option>
-								</select>
-								<div class="tabs-advertisement__items">
-									<a href="#" class="tabs-advertisement__item">Мої оголошення про продаж</a>
-									<a href="#" class="tabs-advertisement__item">Мої оголошення про купівлю</a>
-								</div>
-							</div>
-							<div class="tabs-advertisement__block swiper-slide">
-								<div class="tabs-advertisement__title">Особистий кабінет</div>
-								<select name="form[]" data-scroll="130" data-class-modif="input">
-									<option value="" data-class="select__placeholder" selected></option>
-									<option value="contact">Редагувати контактні данні</option>
-
-								</select>
-								<div class="tabs-advertisement__items">
-									<a href="#" class="tabs-advertisement__item">Редагувати контактні данні</a>
-								</div>
-							</div>
+		<main class="page-product">
+			<div class="breadcrumbs">
+				<div class="breadcrumbs__container">
+					<div class="breadcrumbs__body">
+						<a href="#" class="breadcrumbs__arrow">
+							<img src="img/icons/arrow-back.svg" alt="Icon">
+						</a>
+						<div class="breadcrumbs__content">
+							<span class="breadcrumbs__current">Головна > Форум</span>
 						</div>
-
-						<button type="button" class="swiper-arrow swiper-arrow-prev">
-							<svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M0.46967 5.46967C0.176777 5.76256 0.176777 6.23744 0.46967 6.53033L5.24264 11.3033C5.53553 11.5962 6.01041 11.5962 6.3033 11.3033C6.59619 11.0104 6.59619 10.5355 6.3033 10.2426L2.06066 6L6.3033 1.75736C6.59619 1.46447 6.59619 0.989592 6.3033 0.696698C6.01041 0.403805 5.53553 0.403805 5.24264 0.696698L0.46967 5.46967ZM15 5.25L1 5.25L1 6.75L15 6.75L15 5.25Z" fill="#1858B8" />
-							</svg>
-
-						</button>
-						<button type="button" class="swiper-arrow swiper-arrow-next">
-							<svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M0.46967 5.46967C0.176777 5.76256 0.176777 6.23744 0.46967 6.53033L5.24264 11.3033C5.53553 11.5962 6.01041 11.5962 6.3033 11.3033C6.59619 11.0104 6.59619 10.5355 6.3033 10.2426L2.06066 6L6.3033 1.75736C6.59619 1.46447 6.59619 0.989592 6.3033 0.696698C6.01041 0.403805 5.53553 0.403805 5.24264 0.696698L0.46967 5.46967ZM15 5.25L1 5.25L1 6.75L15 6.75L15 5.25Z" fill="#1858B8" />
-							</svg>
-
-						</button>
-					</div>
-
-					<div class="advertisement__block">
-						<div class="advertisement__wrapper wrapper-advertisement">
-							<div class="wrapper-advertisement__body body-advertisement">
-								<div class="body-advertisement__wrapper">
-									<div class="advertisement-contacts__user user-advertisement-contacts user-advertisement-contacts--mobile">
-										<div class="user-advertisement-contacts__block">
-
-											<p class="user-advertisement-contacts__name">Дмитро</p>
-											<p class="user-advertisement-contacts__surname">Вишнивецький</p>
-										</div>
-										<div class="advertisement-contacts__photo photo-advertisement-contacts">
-											<div class="photo-advertisement-contacts__image">
-
-											</div>
-											<label class="photo-advertisement-contacts__save button">
-												Завантажити фото
-												<input autocomplete="off" type="file">
-											</label>
-										</div>
-									</div>
-
-									<div class="advertisement-contacts__data data-advertisement-contacts">
-										<div class="data-advertisement-contacts__body body-advertisement__block">
-
-											<h2 class="body-advertisement__title title title--small">Контактні дані</h2>
-											<div class="block-row">
-												<div class="block-row__item">
-
-													<div class="input-block">
-														<p>Прізвище*</p>
-														<input autocomplete="off" type="text" placeholder="" class="input">
-													</div>
-												</div>
-												<div class="block-row__item">
-
-													<div class="input-block">
-														<p>Імʼя*</p>
-														<input autocomplete="off" type="text" placeholder="" class="input">
-
-													</div>
-												</div>
-											</div>
-											<div class="block-row">
-												<div class="block-row__item">
-
-													<div class="input-block">
-														<p>По батькові*</p>
-														<input autocomplete="off" type="text" placeholder="" class="input">
-													</div>
-												</div>
-												<div class="block-row__item">
-
-													<div class="input-block">
-														<p>Стать</p>
-														<div class="gender__items">
-															<div class="gender__item">Ч</div>
-															<div class="gender__item">Ж</div>
-														</div>
-
-													</div>
-												</div>
-											</div>
-											<div class="input-block">
-												<p>Дата народження</p>
-												<div class="birth-date">
-													<div class="birth-date__item">
-														<select name="form[]" data-scroll="130" data-class-modif="input">
-															<option value="" data-class="select__placeholder" selected></option>
-															<option value="1">1</option>
-															<option value="2">2</option>
-															<option value="3">3</option>
-															<option value="4">4</option>
-														</select>
-													</div>
-													<div class="birth-date__item">
-														<select name="form[]" data-scroll="130" data-class-modif="input">
-															<option value="" data-class="select__placeholder" selected></option>
-															<option value="1">1</option>
-															<option value="2">2</option>
-															<option value="3">3</option>
-															<option value="4">4</option>
-														</select>
-													</div>
-													<div class="birth-date__item">
-														<select name="form[]" data-scroll="130" data-class-modif="input">
-															<option value="" data-class="select__placeholder" selected></option>
-															<option value="1">1</option>
-															<option value="2">2</option>
-															<option value="3">3</option>
-															<option value="4">4</option>
-														</select>
-													</div>
-												</div>
-
-											</div>
-											<div class="block-row">
-												<div class="block-row__item">
-
-													<div class="input-block">
-														<p>Номер телефону*</p>
-														<input autocomplete="off" type="number" placeholder="Номер телефону" class="input">
-													</div>
-												</div>
-												<div class="block-row__item">
-
-													<div class="input-block">
-														<p>Пошта*</p>
-														<input autocomplete="off" type="email" placeholder="Пошта" class="input">
-
-													</div>
-												</div>
-											</div>
-											<div class="block-row">
-												<div class="block-row__item">
-
-													<div class="input-block">
-														<p>Назва підприємства</p>
-														<input autocomplete="off" type="text" placeholder="Назва підприємства" class="input">
-													</div>
-												</div>
-												<div class="block-row__item">
-
-													<div class="input-block">
-														<p>Посилання на сайт</p>
-														<input autocomplete="off" type="text" placeholder="Посилання на сайт" class="input">
-
-													</div>
-												</div>
-											</div>
-											<div class="block-row">
-												<div class="block-row__item">
-
-													<div class="input-block">
-														<p>Країна</p>
-														<input autocomplete="off" type="text" placeholder="Країна" class="input">
-													</div>
-												</div>
-												<div class="block-row__item">
-
-													<div class="input-block">
-														<p>Область</p>
-														<input autocomplete="off" type="text" placeholder="Область" class="input">
-
-													</div>
-												</div>
-											</div>
-											<div class="block-row">
-												<div class="block-row__item">
-
-													<div class="input-block">
-														<p>Місто</p>
-														<input autocomplete="off" type="text" placeholder="Місто" class="input">
-													</div>
-												</div>
-												<div class="block-row__item">
-
-													<div class="input-block">
-														<p>Адреса</p>
-														<input autocomplete="off" type="text" placeholder="Адреса" class="input">
-
-													</div>
-												</div>
-											</div>
-											<div class="block-row">
-												<div class="block-row__item">
-
-													<div class="input-block">
-														<p>Посилання на Instagram</p>
-														<input autocomplete="off" type="text" placeholder="Посилання на Instagram" class="input">
-													</div>
-												</div>
-												<div class="block-row__item">
-
-													<div class="input-block">
-														<p>Посилання на Telegram/Viber</p>
-														<input autocomplete="off" type="text" placeholder="Посилання на Telegram/Viber" class="input">
-
-													</div>
-												</div>
-											</div>
-											<div class="block-row">
-												<div class="block-row__item">
-
-													<div class="input-block">
-														<p>Посилання на Facebook</p>
-														<input autocomplete="off" type="text" placeholder="Посилання на Facebook" class="input">
-													</div>
-												</div>
-												<div class="block-row__item">
-
-													<div class="input-block">
-														<p>Посилання на YouTube</p>
-														<input autocomplete="off" type="text" placeholder="Посилання на YouTube" class="input">
-
-													</div>
-												</div>
-											</div>
-											<p class="data-advertisement-contacts__text">Поля, що відмічені *, обовʼязкові для заповнення</p>
-										</div>
-										<button class="data-advertisement-contacts__save button">Зберегти</button>
-									</div>
-
-									<div class="body-advertisement__block advertisement-contacts__block">
-										<div class="advertisement-contacts__user-block">
-											<div class="advertisement-contacts__user user-advertisement-contacts">
-												<div class="user-advertisement-contacts__block">
-
-													<p class="user-advertisement-contacts__name">Дмитро</p>
-													<p class="user-advertisement-contacts__surname">Вишнивецький</p>
-												</div>
-												<div class="advertisement-contacts__photo photo-advertisement-contacts">
-													<div class="photo-advertisement-contacts__image">
-													</div>
-													<label class="photo-advertisement-contacts__save button">
-														Завантажити фото
-														<input autocomplete="off" type="file">
-													</label>
-												</div>
-											</div>
-
-											<div class="advertisement-contacts__password password-advertisement-contacts">
-												<div class="password-advertisement-contacts__title">Зміна пароля</div>
-												<div class="password-advertisement-contacts__body">
-													<div class="input-block">
-														<p>Старий пароль</p>
-														<div class="password input">
-															<input autocomplete="off" type="password" placeholder="" class="password__input">
-
-															<button class="password__button">
-																<svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-																	<path d="M11.4545 6.00022C11.4545 6.72354 11.1672 7.41723 10.6557 7.9287C10.1443 8.44016 9.45059 8.72749 8.72727 8.72749C8.00396 8.72749 7.31026 8.44016 6.7988 7.9287C6.28734 7.41723 6 6.72354 6 6.00022C6 5.2769 6.28734 4.58321 6.7988 4.07175C7.31026 3.56029 8.00396 3.27295 8.72727 3.27295C9.45059 3.27295 10.1443 3.56029 10.6557 4.07175C11.1672 4.58321 11.4545 5.2769 11.4545 6.00022Z" fill="#838383" />
-																	<path d="M0 6C0 6 3.27273 0 8.72727 0C14.1818 0 17.4545 6 17.4545 6C17.4545 6 14.1818 12 8.72727 12C3.27273 12 0 6 0 6ZM8.72727 9.81818C9.73992 9.81818 10.7111 9.41591 11.4271 8.69986C12.1432 7.98381 12.5455 7.01264 12.5455 6C12.5455 4.98736 12.1432 4.01619 11.4271 3.30014C10.7111 2.58409 9.73992 2.18182 8.72727 2.18182C7.71463 2.18182 6.74346 2.58409 6.02741 3.30014C5.31136 4.01619 4.90909 4.98736 4.90909 6C4.90909 7.01264 5.31136 7.98381 6.02741 8.69986C6.74346 9.41591 7.71463 9.81818 8.72727 9.81818Z" fill="#838383" />
-																</svg>
-
-															</button>
-														</div>
-													</div>
-													<div class="input-block">
-														<p>Новий пароль</p>
-														<div class="password input">
-															<input autocomplete="off" type="password" placeholder="" class="password__input">
-															<button class="password__button">
-																<svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-																	<path d="M11.4545 6.00022C11.4545 6.72354 11.1672 7.41723 10.6557 7.9287C10.1443 8.44016 9.45059 8.72749 8.72727 8.72749C8.00396 8.72749 7.31026 8.44016 6.7988 7.9287C6.28734 7.41723 6 6.72354 6 6.00022C6 5.2769 6.28734 4.58321 6.7988 4.07175C7.31026 3.56029 8.00396 3.27295 8.72727 3.27295C9.45059 3.27295 10.1443 3.56029 10.6557 4.07175C11.1672 4.58321 11.4545 5.2769 11.4545 6.00022Z" fill="#838383" />
-																	<path d="M0 6C0 6 3.27273 0 8.72727 0C14.1818 0 17.4545 6 17.4545 6C17.4545 6 14.1818 12 8.72727 12C3.27273 12 0 6 0 6ZM8.72727 9.81818C9.73992 9.81818 10.7111 9.41591 11.4271 8.69986C12.1432 7.98381 12.5455 7.01264 12.5455 6C12.5455 4.98736 12.1432 4.01619 11.4271 3.30014C10.7111 2.58409 9.73992 2.18182 8.72727 2.18182C7.71463 2.18182 6.74346 2.58409 6.02741 3.30014C5.31136 4.01619 4.90909 4.98736 4.90909 6C4.90909 7.01264 5.31136 7.98381 6.02741 8.69986C6.74346 9.41591 7.71463 9.81818 8.72727 9.81818Z" fill="#838383" />
-																</svg>
-
-															</button>
-														</div>
-													</div>
-													<div class="input-block">
-														<p>Підтвердження пароля</p>
-														<div class="password input">
-															<input autocomplete="off" type="password" placeholder="" class="password__input">
-
-															<button class="password__button">
-																<svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-																	<path d="M11.4545 6.00022C11.4545 6.72354 11.1672 7.41723 10.6557 7.9287C10.1443 8.44016 9.45059 8.72749 8.72727 8.72749C8.00396 8.72749 7.31026 8.44016 6.7988 7.9287C6.28734 7.41723 6 6.72354 6 6.00022C6 5.2769 6.28734 4.58321 6.7988 4.07175C7.31026 3.56029 8.00396 3.27295 8.72727 3.27295C9.45059 3.27295 10.1443 3.56029 10.6557 4.07175C11.1672 4.58321 11.4545 5.2769 11.4545 6.00022Z" fill="#838383" />
-																	<path d="M0 6C0 6 3.27273 0 8.72727 0C14.1818 0 17.4545 6 17.4545 6C17.4545 6 14.1818 12 8.72727 12C3.27273 12 0 6 0 6ZM8.72727 9.81818C9.73992 9.81818 10.7111 9.41591 11.4271 8.69986C12.1432 7.98381 12.5455 7.01264 12.5455 6C12.5455 4.98736 12.1432 4.01619 11.4271 3.30014C10.7111 2.58409 9.73992 2.18182 8.72727 2.18182C7.71463 2.18182 6.74346 2.58409 6.02741 3.30014C5.31136 4.01619 4.90909 4.98736 4.90909 6C4.90909 7.01264 5.31136 7.98381 6.02741 8.69986C6.74346 9.41591 7.71463 9.81818 8.72727 9.81818Z" fill="#838383" />
-																</svg>
-
-															</button>
-														</div>
-													</div>
-												</div>
-												<div class="password-advertisement-contacts__actions">
-													<button class="password-advertisement-contacts__save button">Зберегти</button>
-													<button class="password-advertisement-contacts__cancel">Відміна</button>
-												</div>
-											</div>
-
-										</div>
-										<button class="advertisement-contacts__delete button button--secondary">Видалити акаунт</button>
-									</div>
-								</div>
-
-							</div>
-
-						</div>
-
 					</div>
 				</div>
+			</div>
+			<section class="forum">
+				<div class="forum__top top-forum">
+					<div class="top-forum__container">
+
+						<div class="top-forum__title title">Форум</div>
+						<div class="top-forum__block">
+							<select name="form[]" data-scroll="130" data-class-modif="input">
+								<option value="" data-class="select__placeholder" selected>Мої теми</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+							</select>
+							<div class="top-forum__search search">
+								<input autocomplete="off" type="text" placeholder="Пошук по ключовим словам" class="search__input">
+								<button class="search__icon-body">
+									<div class="search__icon">
+										<img src="img/icons/search.svg" alt="Icon">
+									</div>
+								</button>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="forum__sections sections-forum">
+					<div class="sections-forum__container">
+
+						<p class="sections-forum__text">Виберіть розділ форуму:</p>
+						<div class="sections-forum__body">
+							<div class="sections-forum__slider swiper">
+								<div class="sections-forum__wrapper swiper-wrapper">
+									<div class="sections-forum__slide swiper-slide">
+										<div class="sections-forum__item item-sections-forum">
+											<div class="item-sections-forum__title">Полікарбонат</div>
+											<p class="item-sections-forum__text">Обговорюємо полікарбонат та його види</p>
+										</div>
+									</div>
+									<div class="sections-forum__slide swiper-slide">
+										<div class="sections-forum__item item-sections-forum">
+											<div class="item-sections-forum__title">Пігменти та аддитиви</div>
+											<p class="item-sections-forum__text">Підвищуємо властивості пласмас завдяки додаванню примесей</p>
+										</div>
+									</div>
+									<div class="sections-forum__slide swiper-slide">
+										<div class="sections-forum__item item-sections-forum">
+											<div class="item-sections-forum__title">Клеи, полімерні покриття (лакофарба) та друк</div>
+											<p class="item-sections-forum__text">Обговорюємо направлення полімерної науки і техніки, повʼязані з клеями і тд</p>
+										</div>
+									</div>
+									<div class="sections-forum__slide swiper-slide">
+										<div class="sections-forum__item item-sections-forum">
+											<div class="item-sections-forum__title">Лиття під тиском</div>
+											<p class="item-sections-forum__text">Головний метод виробництва штучних виробів з пласмас</p>
+										</div>
+									</div>
+									<div class="sections-forum__slide swiper-slide">
+										<div class="sections-forum__item item-sections-forum">
+											<div class="item-sections-forum__title">Композити</div>
+											<p class="item-sections-forum__text">Спілкуємось про композиційні матеріали</p>
+										</div>
+									</div>
+
+								</div>
+								<div class="sections-forum__pagination swiper-pagination"></div>
+								<button type="button" class="sections-forum__prev swiper-button swiper-button-prev">
+									<svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<rect x="0.5" y="0.5" width="40" height="40" rx="3.5" fill="#1858B8" stroke="#1858B8" />
+										<path d="M24.5303 21.5303C24.8232 21.2374 24.8232 20.7626 24.5303 20.4697L19.7574 15.6967C19.4645 15.4038 18.9896 15.4038 18.6967 15.6967C18.4038 15.9896 18.4038 16.4645 18.6967 16.7574L22.9393 21L18.6967 25.2426C18.4038 25.5355 18.4038 26.0104 18.6967 26.3033C18.9896 26.5962 19.4645 26.5962 19.7574 26.3033L24.5303 21.5303ZM24 20.25H23V21.75H24V20.25Z" fill="white" />
+									</svg>
+								</button>
+								<button type="button" class="sections-forum__next swiper-button swiper-button-next">
+									<svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<rect x="0.5" y="0.5" width="40" height="40" rx="3.5" fill="#1858B8" stroke="#1858B8" />
+										<path d="M24.5303 21.5303C24.8232 21.2374 24.8232 20.7626 24.5303 20.4697L19.7574 15.6967C19.4645 15.4038 18.9896 15.4038 18.6967 15.6967C18.4038 15.9896 18.4038 16.4645 18.6967 16.7574L22.9393 21L18.6967 25.2426C18.4038 25.5355 18.4038 26.0104 18.6967 26.3033C18.9896 26.5962 19.4645 26.5962 19.7574 26.3033L24.5303 21.5303ZM24 20.25H23V21.75H24V20.25Z" fill="white" />
+									</svg>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="forum__body body-forum body-forum--delete">
+					<div class="body-forum__container">
+
+						<p class="body-forum__text">
+							Виберіть тему форуму:
+						</p>
+						<div class="body-forum__content">
+							<div class="body-forum__items">
+								<div class="body-forum__item item-forum">
+									<button class="item-forum__delete">
+										<img src="img/icons/bin.svg" alt="Icon">
+									</button>
+									<div class="item-forum__body">
+
+										<div class="item-forum__block">
+											<h4 class="item-forum__title">Ключові властивості полікарбонату</h4>
+											<p class="item-forum__text">Ключовими властивостями полікарбонату є висока прозорість, відносно мала вага та дуже висока ударна в'язкість (удароміцність). Полікарбонат є полімерним пластиковим матеріалом, який можна використовувати по-різному. Завдяки фізичним властивостям полікарбонату цей матеріал широко використовується у будівництві та архітектурі. Ми можемо використовувати ... </p>
+										</div>
+										<div class="item-forum__block">
+											<div class="item-forum__info info-item-forum">
+												<div class="info-item-forum__item">
+													<div class="info-item-forum__icon">
+														<img src="img/icons/watch.svg" alt="Icon">
+													</div>
+													<span class="info-item-forum__value">8</span>
+												</div>
+												<div class="info-item-forum__item">
+													<div class="info-item-forum__icon">
+														<img src="img/icons/comments.svg" alt="Icon">
+													</div>
+													<span class="info-item-forum__value">4</span>
+												</div>
+											</div>
+											<a href="#" class="item-forum__more">
+												<span>Читати</span>
+												<svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<path d="M0.46967 16.0263C0.176777 16.3192 0.176777 16.7941 0.46967 17.087C0.762563 17.3799 1.23744 17.3799 1.53033 17.087L0.46967 16.0263ZM16.75 1.55664C16.75 1.14243 16.4142 0.806641 16 0.806641L9.25 0.806641C8.83579 0.806641 8.5 1.14243 8.5 1.55664C8.5 1.97085 8.83579 2.30664 9.25 2.30664L15.25 2.30664L15.25 8.30664C15.25 8.72085 15.5858 9.05664 16 9.05664C16.4142 9.05664 16.75 8.72085 16.75 8.30664L16.75 1.55664ZM1.53033 17.087L16.5303 2.08697L15.4697 1.02631L0.46967 16.0263L1.53033 17.087Z" fill="#1858B8" />
+												</svg>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="body-forum__item item-forum">
+									<button class="item-forum__delete">
+										<img src="img/icons/bin.svg" alt="Icon">
+									</button>
+									<div class="item-forum__body">
+
+										<div class="item-forum__block">
+											<h4 class="item-forum__title">Ключові властивості полікарбонату</h4>
+											<p class="item-forum__text">Ключовими властивостями полікарбонату є висока прозорість, відносно мала вага та дуже висока ударна в'язкість (удароміцність). Полікарбонат є полімерним пластиковим матеріалом, який можна використовувати по-різному. Завдяки фізичним властивостям полікарбонату цей матеріал широко використовується у будівництві та архітектурі. Ми можемо використовувати ... </p>
+										</div>
+										<div class="item-forum__block">
+											<div class="item-forum__info info-item-forum">
+												<div class="info-item-forum__item">
+													<div class="info-item-forum__icon">
+														<img src="img/icons/watch.svg" alt="Icon">
+													</div>
+													<span class="info-item-forum__value">8</span>
+												</div>
+												<div class="info-item-forum__item">
+													<div class="info-item-forum__icon">
+														<img src="img/icons/comments.svg" alt="Icon">
+													</div>
+													<span class="info-item-forum__value">4</span>
+												</div>
+											</div>
+											<a href="#" class="item-forum__more">
+												<span>Читати</span>
+												<svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<path d="M0.46967 16.0263C0.176777 16.3192 0.176777 16.7941 0.46967 17.087C0.762563 17.3799 1.23744 17.3799 1.53033 17.087L0.46967 16.0263ZM16.75 1.55664C16.75 1.14243 16.4142 0.806641 16 0.806641L9.25 0.806641C8.83579 0.806641 8.5 1.14243 8.5 1.55664C8.5 1.97085 8.83579 2.30664 9.25 2.30664L15.25 2.30664L15.25 8.30664C15.25 8.72085 15.5858 9.05664 16 9.05664C16.4142 9.05664 16.75 8.72085 16.75 8.30664L16.75 1.55664ZM1.53033 17.087L16.5303 2.08697L15.4697 1.02631L0.46967 16.0263L1.53033 17.087Z" fill="#1858B8" />
+												</svg>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="body-forum__item item-forum">
+									<button class="item-forum__delete">
+										<img src="img/icons/bin.svg" alt="Icon">
+									</button>
+									<div class="item-forum__body">
+
+										<div class="item-forum__block">
+											<h4 class="item-forum__title">Ключові властивості полікарбонату</h4>
+											<p class="item-forum__text">Ключовими властивостями полікарбонату є висока прозорість, відносно мала вага та дуже висока ударна в'язкість (удароміцність). Полікарбонат є полімерним пластиковим матеріалом, який можна використовувати по-різному. Завдяки фізичним властивостям полікарбонату цей матеріал широко використовується у будівництві та архітектурі. Ми можемо використовувати ... </p>
+										</div>
+										<div class="item-forum__block">
+											<div class="item-forum__info info-item-forum">
+												<div class="info-item-forum__item">
+													<div class="info-item-forum__icon">
+														<img src="img/icons/watch.svg" alt="Icon">
+													</div>
+													<span class="info-item-forum__value">8</span>
+												</div>
+												<div class="info-item-forum__item">
+													<div class="info-item-forum__icon">
+														<img src="img/icons/comments.svg" alt="Icon">
+													</div>
+													<span class="info-item-forum__value">4</span>
+												</div>
+											</div>
+											<a href="#" class="item-forum__more">
+												<span>Читати</span>
+												<svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<path d="M0.46967 16.0263C0.176777 16.3192 0.176777 16.7941 0.46967 17.087C0.762563 17.3799 1.23744 17.3799 1.53033 17.087L0.46967 16.0263ZM16.75 1.55664C16.75 1.14243 16.4142 0.806641 16 0.806641L9.25 0.806641C8.83579 0.806641 8.5 1.14243 8.5 1.55664C8.5 1.97085 8.83579 2.30664 9.25 2.30664L15.25 2.30664L15.25 8.30664C15.25 8.72085 15.5858 9.05664 16 9.05664C16.4142 9.05664 16.75 8.72085 16.75 8.30664L16.75 1.55664ZM1.53033 17.087L16.5303 2.08697L15.4697 1.02631L0.46967 16.0263L1.53033 17.087Z" fill="#1858B8" />
+												</svg>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="body-forum__pages pages">
+								<button class="pages__arrow pages__arrow-prev disabled">
+									<svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<rect x="0.5" y="0.5" width="40" height="40" rx="3.5" fill="#1858B8" stroke="#1858B8"></rect>
+										<path d="M24.5303 21.5303C24.8232 21.2374 24.8232 20.7626 24.5303 20.4697L19.7574 15.6967C19.4645 15.4038 18.9896 15.4038 18.6967 15.6967C18.4038 15.9896 18.4038 16.4645 18.6967 16.7574L22.9393 21L18.6967 25.2426C18.4038 25.5355 18.4038 26.0104 18.6967 26.3033C18.9896 26.5962 19.4645 26.5962 19.7574 26.3033L24.5303 21.5303ZM24 20.25H23V21.75H24V20.25Z" fill="white"></path>
+									</svg>
+								</button>
+								<div class="pages__body">
+									<div class="pages__page">1</div>
+									<div class="pages__page">2</div>
+									<div class="pages__page">...</div>
+									<div class="pages__page">25</div>
+								</div>
+								<button class="pages__arrow pages__arrow-next">
+									<svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<rect x="0.5" y="0.5" width="40" height="40" rx="3.5" fill="#1858B8" stroke="#1858B8"></rect>
+										<path d="M24.5303 21.5303C24.8232 21.2374 24.8232 20.7626 24.5303 20.4697L19.7574 15.6967C19.4645 15.4038 18.9896 15.4038 18.6967 15.6967C18.4038 15.9896 18.4038 16.4645 18.6967 16.7574L22.9393 21L18.6967 25.2426C18.4038 25.5355 18.4038 26.0104 18.6967 26.3033C18.9896 26.5962 19.4645 26.5962 19.7574 26.3033L24.5303 21.5303ZM24 20.25H23V21.75H24V20.25Z" fill="white"></path>
+									</svg>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
 			</section>
 		</main>
 		<footer class="footer">
@@ -976,39 +864,6 @@
 			}
 			preloader();
 		</script>
-	</div>
-
-	<div id="popup-form" aria-hidden="true" class="popup-form popup">
-		<div class="popup__wrapper">
-			<div class="popup__content">
-				<div class="popup-form__body body-popup-form">
-					<!-- <button data-close type="button" class="popup__close">Закрити</button> -->
-
-					<div class="body-popup-form__top">
-						<h3 class="body-popup-form__title">Якщо у Вас є зауваження чи пропозиції, напишіть нам!</h3>
-						<p class="body-popup-form__text">Ми працюємо над тим, щоб Вам було комфортно з нами!</p>
-					</div>
-					<form class="body-popup-form__form form-popup">
-						<div class="form-popup__block">
-							<div class="input-block">
-								<p>Імʼя</p>
-								<input autocomplete="off" type="text" name="form[]" placeholder="Імʼя" class="input">
-							</div>
-							<div class="input-block">
-								<p>Ваша пошта</p>
-								<input autocomplete="off" type="email" name="form[]" placeholder="Ваша пошта" class="input">
-							</div>
-							<div class="input-block">
-								<p>Повідомлення</p>
-								<textarea class="input form-popup__textarea" placeholder="Повідомлення"></textarea>
-							</div>
-						</div>
-						<button type="submit" class="form-popup__button button">Надіслати</button>
-					</form>
-				</div>
-
-			</div>
-		</div>
 	</div>
 
 	<script src="js/app.min.js?_v=20240530190629"></script>

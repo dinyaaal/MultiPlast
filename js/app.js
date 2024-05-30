@@ -240,6 +240,113 @@
             }
         }));
     }
+    function showMore() {
+        window.addEventListener("load", (function(e) {
+            const showMoreBlocks = document.querySelectorAll("[data-showmore]");
+            let showMoreBlocksRegular;
+            let mdQueriesArray;
+            if (showMoreBlocks.length) {
+                showMoreBlocksRegular = Array.from(showMoreBlocks).filter((function(item, index, self) {
+                    return !item.dataset.showmoreMedia;
+                }));
+                showMoreBlocksRegular.length ? initItems(showMoreBlocksRegular) : null;
+                document.addEventListener("click", showMoreActions);
+                window.addEventListener("resize", showMoreActions);
+                mdQueriesArray = dataMediaQueries(showMoreBlocks, "showmoreMedia");
+                if (mdQueriesArray && mdQueriesArray.length) {
+                    mdQueriesArray.forEach((mdQueriesItem => {
+                        mdQueriesItem.matchMedia.addEventListener("change", (function() {
+                            initItems(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
+                        }));
+                    }));
+                    initItemsMedia(mdQueriesArray);
+                }
+            }
+            function initItemsMedia(mdQueriesArray) {
+                mdQueriesArray.forEach((mdQueriesItem => {
+                    initItems(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
+                }));
+            }
+            function initItems(showMoreBlocks, matchMedia) {
+                showMoreBlocks.forEach((showMoreBlock => {
+                    initItem(showMoreBlock, matchMedia);
+                }));
+            }
+            function initItem(showMoreBlock, matchMedia = false) {
+                showMoreBlock = matchMedia ? showMoreBlock.item : showMoreBlock;
+                let showMoreContent = showMoreBlock.querySelectorAll("[data-showmore-content]");
+                let showMoreButton = showMoreBlock.querySelectorAll("[data-showmore-button]");
+                showMoreContent = Array.from(showMoreContent).filter((item => item.closest("[data-showmore]") === showMoreBlock))[0];
+                showMoreButton = Array.from(showMoreButton).filter((item => item.closest("[data-showmore]") === showMoreBlock))[0];
+                const hiddenHeight = getHeight(showMoreBlock, showMoreContent);
+                if (matchMedia.matches || !matchMedia) if (hiddenHeight < getOriginalHeight(showMoreContent)) {
+                    _slideUp(showMoreContent, 0, showMoreBlock.classList.contains("_showmore-active") ? getOriginalHeight(showMoreContent) : hiddenHeight);
+                    showMoreButton.hidden = false;
+                } else {
+                    _slideDown(showMoreContent, 0, hiddenHeight);
+                    showMoreButton.hidden = true;
+                } else {
+                    _slideDown(showMoreContent, 0, hiddenHeight);
+                    showMoreButton.hidden = true;
+                }
+            }
+            function getHeight(showMoreBlock, showMoreContent) {
+                let hiddenHeight = 0;
+                const showMoreType = showMoreBlock.dataset.showmore ? showMoreBlock.dataset.showmore : "size";
+                const rowGap = parseFloat(getComputedStyle(showMoreContent).rowGap) ? parseFloat(getComputedStyle(showMoreContent).rowGap) : 0;
+                if (showMoreType === "items") {
+                    const showMoreTypeValue = showMoreContent.dataset.showmoreContent ? showMoreContent.dataset.showmoreContent : 3;
+                    const showMoreItems = showMoreContent.children;
+                    for (let index = 1; index < showMoreItems.length; index++) {
+                        const showMoreItem = showMoreItems[index - 1];
+                        const marginTop = parseFloat(getComputedStyle(showMoreItem).marginTop) ? parseFloat(getComputedStyle(showMoreItem).marginTop) : 0;
+                        const marginBottom = parseFloat(getComputedStyle(showMoreItem).marginBottom) ? parseFloat(getComputedStyle(showMoreItem).marginBottom) : 0;
+                        hiddenHeight += showMoreItem.offsetHeight + marginTop;
+                        if (index == showMoreTypeValue) break;
+                        hiddenHeight += marginBottom;
+                    }
+                    rowGap ? hiddenHeight += (showMoreTypeValue - 1) * rowGap : null;
+                } else {
+                    const showMoreTypeValue = showMoreContent.dataset.showmoreContent ? showMoreContent.dataset.showmoreContent : 150;
+                    hiddenHeight = showMoreTypeValue;
+                }
+                return hiddenHeight;
+            }
+            function getOriginalHeight(showMoreContent) {
+                let parentHidden;
+                let hiddenHeight = showMoreContent.offsetHeight;
+                showMoreContent.style.removeProperty("height");
+                if (showMoreContent.closest(`[hidden]`)) {
+                    parentHidden = showMoreContent.closest(`[hidden]`);
+                    parentHidden.hidden = false;
+                }
+                let originalHeight = showMoreContent.offsetHeight;
+                parentHidden ? parentHidden.hidden = true : null;
+                showMoreContent.style.height = `${hiddenHeight}px`;
+                return originalHeight;
+            }
+            function showMoreActions(e) {
+                const targetEvent = e.target;
+                const targetType = e.type;
+                if (targetType === "click") {
+                    if (targetEvent.closest("[data-showmore-button]")) {
+                        const showMoreButton = targetEvent.closest("[data-showmore-button]");
+                        const showMoreBlock = showMoreButton.closest("[data-showmore]");
+                        const showMoreContent = showMoreBlock.querySelector("[data-showmore-content]");
+                        const showMoreSpeed = showMoreBlock.dataset.showmoreButton ? showMoreBlock.dataset.showmoreButton : "500";
+                        const hiddenHeight = getHeight(showMoreBlock, showMoreContent);
+                        if (!showMoreContent.classList.contains("_slide")) {
+                            showMoreBlock.classList.contains("_showmore-active") ? _slideUp(showMoreContent, showMoreSpeed, hiddenHeight) : _slideDown(showMoreContent, showMoreSpeed, hiddenHeight);
+                            showMoreBlock.classList.toggle("_showmore-active");
+                        }
+                    }
+                } else if (targetType === "resize") {
+                    showMoreBlocksRegular && showMoreBlocksRegular.length ? initItems(showMoreBlocksRegular) : null;
+                    mdQueriesArray && mdQueriesArray.length ? initItemsMedia(mdQueriesArray) : null;
+                }
+            }
+        }));
+    }
     function functions_FLS(message) {
         setTimeout((() => {
             if (window.FLS) console.log(message);
@@ -961,14 +1068,14 @@
         }
     }
     modules_flsModules.select = new SelectConstructor({});
-    function ssr_window_esm_isObject(obj) {
+    function isObject(obj) {
         return obj !== null && typeof obj === "object" && "constructor" in obj && obj.constructor === Object;
     }
     function extend(target, src) {
         if (target === void 0) target = {};
         if (src === void 0) src = {};
         Object.keys(src).forEach((key => {
-            if (typeof target[key] === "undefined") target[key] = src[key]; else if (ssr_window_esm_isObject(src[key]) && ssr_window_esm_isObject(target[key]) && Object.keys(src[key]).length > 0) extend(target[key], src[key]);
+            if (typeof target[key] === "undefined") target[key] = src[key]; else if (isObject(src[key]) && isObject(target[key]) && Object.keys(src[key]).length > 0) extend(target[key], src[key]);
         }));
     }
     const ssrDocument = {
@@ -4392,6 +4499,149 @@
             destroy
         });
     }
+    function Thumb(_ref) {
+        let {swiper, extendParams, on} = _ref;
+        extendParams({
+            thumbs: {
+                swiper: null,
+                multipleActiveThumbs: true,
+                autoScrollOffset: 0,
+                slideThumbActiveClass: "swiper-slide-thumb-active",
+                thumbsContainerClass: "swiper-thumbs"
+            }
+        });
+        let initialized = false;
+        let swiperCreated = false;
+        swiper.thumbs = {
+            swiper: null
+        };
+        function onThumbClick() {
+            const thumbsSwiper = swiper.thumbs.swiper;
+            if (!thumbsSwiper || thumbsSwiper.destroyed) return;
+            const clickedIndex = thumbsSwiper.clickedIndex;
+            const clickedSlide = thumbsSwiper.clickedSlide;
+            if (clickedSlide && clickedSlide.classList.contains(swiper.params.thumbs.slideThumbActiveClass)) return;
+            if (typeof clickedIndex === "undefined" || clickedIndex === null) return;
+            let slideToIndex;
+            if (thumbsSwiper.params.loop) slideToIndex = parseInt(thumbsSwiper.clickedSlide.getAttribute("data-swiper-slide-index"), 10); else slideToIndex = clickedIndex;
+            if (swiper.params.loop) swiper.slideToLoop(slideToIndex); else swiper.slideTo(slideToIndex);
+        }
+        function init() {
+            const {thumbs: thumbsParams} = swiper.params;
+            if (initialized) return false;
+            initialized = true;
+            const SwiperClass = swiper.constructor;
+            if (thumbsParams.swiper instanceof SwiperClass) {
+                swiper.thumbs.swiper = thumbsParams.swiper;
+                Object.assign(swiper.thumbs.swiper.originalParams, {
+                    watchSlidesProgress: true,
+                    slideToClickedSlide: false
+                });
+                Object.assign(swiper.thumbs.swiper.params, {
+                    watchSlidesProgress: true,
+                    slideToClickedSlide: false
+                });
+                swiper.thumbs.swiper.update();
+            } else if (utils_isObject(thumbsParams.swiper)) {
+                const thumbsSwiperParams = Object.assign({}, thumbsParams.swiper);
+                Object.assign(thumbsSwiperParams, {
+                    watchSlidesProgress: true,
+                    slideToClickedSlide: false
+                });
+                swiper.thumbs.swiper = new SwiperClass(thumbsSwiperParams);
+                swiperCreated = true;
+            }
+            swiper.thumbs.swiper.el.classList.add(swiper.params.thumbs.thumbsContainerClass);
+            swiper.thumbs.swiper.on("tap", onThumbClick);
+            return true;
+        }
+        function update(initial) {
+            const thumbsSwiper = swiper.thumbs.swiper;
+            if (!thumbsSwiper || thumbsSwiper.destroyed) return;
+            const slidesPerView = thumbsSwiper.params.slidesPerView === "auto" ? thumbsSwiper.slidesPerViewDynamic() : thumbsSwiper.params.slidesPerView;
+            let thumbsToActivate = 1;
+            const thumbActiveClass = swiper.params.thumbs.slideThumbActiveClass;
+            if (swiper.params.slidesPerView > 1 && !swiper.params.centeredSlides) thumbsToActivate = swiper.params.slidesPerView;
+            if (!swiper.params.thumbs.multipleActiveThumbs) thumbsToActivate = 1;
+            thumbsToActivate = Math.floor(thumbsToActivate);
+            thumbsSwiper.slides.forEach((slideEl => slideEl.classList.remove(thumbActiveClass)));
+            if (thumbsSwiper.params.loop || thumbsSwiper.params.virtual && thumbsSwiper.params.virtual.enabled) for (let i = 0; i < thumbsToActivate; i += 1) utils_elementChildren(thumbsSwiper.slidesEl, `[data-swiper-slide-index="${swiper.realIndex + i}"]`).forEach((slideEl => {
+                slideEl.classList.add(thumbActiveClass);
+            })); else for (let i = 0; i < thumbsToActivate; i += 1) if (thumbsSwiper.slides[swiper.realIndex + i]) thumbsSwiper.slides[swiper.realIndex + i].classList.add(thumbActiveClass);
+            const autoScrollOffset = swiper.params.thumbs.autoScrollOffset;
+            const useOffset = autoScrollOffset && !thumbsSwiper.params.loop;
+            if (swiper.realIndex !== thumbsSwiper.realIndex || useOffset) {
+                const currentThumbsIndex = thumbsSwiper.activeIndex;
+                let newThumbsIndex;
+                let direction;
+                if (thumbsSwiper.params.loop) {
+                    const newThumbsSlide = thumbsSwiper.slides.filter((slideEl => slideEl.getAttribute("data-swiper-slide-index") === `${swiper.realIndex}`))[0];
+                    newThumbsIndex = thumbsSwiper.slides.indexOf(newThumbsSlide);
+                    direction = swiper.activeIndex > swiper.previousIndex ? "next" : "prev";
+                } else {
+                    newThumbsIndex = swiper.realIndex;
+                    direction = newThumbsIndex > swiper.previousIndex ? "next" : "prev";
+                }
+                if (useOffset) newThumbsIndex += direction === "next" ? autoScrollOffset : -1 * autoScrollOffset;
+                if (thumbsSwiper.visibleSlidesIndexes && thumbsSwiper.visibleSlidesIndexes.indexOf(newThumbsIndex) < 0) {
+                    if (thumbsSwiper.params.centeredSlides) if (newThumbsIndex > currentThumbsIndex) newThumbsIndex = newThumbsIndex - Math.floor(slidesPerView / 2) + 1; else newThumbsIndex = newThumbsIndex + Math.floor(slidesPerView / 2) - 1; else if (newThumbsIndex > currentThumbsIndex && thumbsSwiper.params.slidesPerGroup === 1) ;
+                    thumbsSwiper.slideTo(newThumbsIndex, initial ? 0 : void 0);
+                }
+            }
+        }
+        on("beforeInit", (() => {
+            const {thumbs} = swiper.params;
+            if (!thumbs || !thumbs.swiper) return;
+            if (typeof thumbs.swiper === "string" || thumbs.swiper instanceof HTMLElement) {
+                const document = ssr_window_esm_getDocument();
+                const getThumbsElementAndInit = () => {
+                    const thumbsElement = typeof thumbs.swiper === "string" ? document.querySelector(thumbs.swiper) : thumbs.swiper;
+                    if (thumbsElement && thumbsElement.swiper) {
+                        thumbs.swiper = thumbsElement.swiper;
+                        init();
+                        update(true);
+                    } else if (thumbsElement) {
+                        const onThumbsSwiper = e => {
+                            thumbs.swiper = e.detail[0];
+                            thumbsElement.removeEventListener("init", onThumbsSwiper);
+                            init();
+                            update(true);
+                            thumbs.swiper.update();
+                            swiper.update();
+                        };
+                        thumbsElement.addEventListener("init", onThumbsSwiper);
+                    }
+                    return thumbsElement;
+                };
+                const watchForThumbsToAppear = () => {
+                    if (swiper.destroyed) return;
+                    const thumbsElement = getThumbsElementAndInit();
+                    if (!thumbsElement) requestAnimationFrame(watchForThumbsToAppear);
+                };
+                requestAnimationFrame(watchForThumbsToAppear);
+            } else {
+                init();
+                update(true);
+            }
+        }));
+        on("slideChange update resize observerUpdate", (() => {
+            update();
+        }));
+        on("setTransition", ((_s, duration) => {
+            const thumbsSwiper = swiper.thumbs.swiper;
+            if (!thumbsSwiper || thumbsSwiper.destroyed) return;
+            thumbsSwiper.setTransition(duration);
+        }));
+        on("beforeDestroy", (() => {
+            const thumbsSwiper = swiper.thumbs.swiper;
+            if (!thumbsSwiper || thumbsSwiper.destroyed) return;
+            if (swiperCreated) thumbsSwiper.destroy();
+        }));
+        Object.assign(swiper.thumbs, {
+            init,
+            update
+        });
+    }
     function initSliders() {
         if (document.querySelector(".tabs-advertisement")) new swiper_core_Swiper(".tabs-advertisement", {
             modules: [ Navigation ],
@@ -4468,6 +4718,85 @@
                     slidesPerView: "4"
                 }
             },
+            on: {}
+        });
+        if (document.querySelector(".body-product__thumbs-slider")) var productSliderThumbs = new swiper_core_Swiper(".body-product__thumbs-slider", {
+            modules: [ Navigation, Pagination ],
+            observer: true,
+            observeParents: true,
+            slidesPerView: "auto",
+            spaceBetween: 10,
+            speed: 800,
+            navigation: {
+                prevEl: ".thumbs-slider-body-product-button-prev",
+                nextEl: ".thumbs-slider-body-product-button-next"
+            },
+            breakpoints: {},
+            on: {}
+        });
+        if (document.querySelector(".body-product__slider")) new swiper_core_Swiper(".body-product__slider", {
+            modules: [ Navigation, Pagination, Thumb ],
+            observer: true,
+            observeParents: true,
+            slidesPerView: "1",
+            spaceBetween: 20,
+            speed: 800,
+            thumbs: {
+                swiper: productSliderThumbs
+            },
+            pagination: {},
+            navigation: {},
+            breakpoints: {},
+            on: {}
+        });
+        if (document.querySelector(".sections-forum__slider")) new swiper_core_Swiper(".sections-forum__slider", {
+            modules: [ Navigation, Pagination ],
+            observer: true,
+            observeParents: true,
+            slidesPerView: "auto",
+            spaceBetween: 20,
+            speed: 800,
+            pagination: {
+                el: ".sections-forum__pagination",
+                clickable: true
+            },
+            navigation: {
+                prevEl: ".sections-forum__prev",
+                nextEl: ".sections-forum__next"
+            },
+            breakpoints: {},
+            on: {}
+        });
+        if (document.querySelector(".body-popup-images__thumbs-slider")) productSliderThumbs = new swiper_core_Swiper(".body-popup-images__thumbs-slider", {
+            modules: [ Navigation, Pagination ],
+            observer: true,
+            observeParents: true,
+            slidesPerView: "auto",
+            spaceBetween: 10,
+            speed: 800,
+            navigation: {
+                prevEl: ".thumbs-slider-body-product-button-prev",
+                nextEl: ".thumbs-slider-body-product-button-next"
+            },
+            breakpoints: {},
+            on: {}
+        });
+        if (document.querySelector(".body-popup-images__slider")) new swiper_core_Swiper(".body-popup-images__slider", {
+            modules: [ Navigation, Pagination, Thumb ],
+            observer: true,
+            observeParents: true,
+            slidesPerView: "1",
+            spaceBetween: 20,
+            speed: 800,
+            thumbs: {
+                swiper: productSliderThumbs
+            },
+            pagination: {},
+            navigation: {
+                prevEl: ".body-popup-images-button-prev",
+                nextEl: ".body-popup-images-button-next"
+            },
+            breakpoints: {},
             on: {}
         });
     }
@@ -4562,6 +4891,13 @@
         }));
     }));
     document.addEventListener("DOMContentLoaded", (function() {
+        const chatPreviewText = document.querySelectorAll(".item-block-chat__text");
+        const maxLength = 60;
+        chatPreviewText.forEach((function(element) {
+            if (element.textContent.length > maxLength) element.textContent = element.textContent.substring(0, maxLength) + "...";
+        }));
+    }));
+    document.addEventListener("DOMContentLoaded", (function() {
         const homeForumText = document.querySelectorAll(".item-home-forum__text");
         const maxLength = 100;
         homeForumText.forEach((function(element) {
@@ -4569,22 +4905,98 @@
         }));
     }));
     document.addEventListener("DOMContentLoaded", (function() {
-        const filtersOpenButtons = document.querySelectorAll(".filters-trade__button");
-        const filtersBody = document.querySelector(".body-filters-trade");
-        const filtersBackButton = document.querySelector(".body-filters-trade__back");
-        filtersOpenButtons.forEach((function(button) {
-            button.addEventListener("click", (function() {
-                filtersBody.classList.toggle("active");
-                if (bodyLockStatus) bodyLockToggle();
+        const homeForumText = document.querySelectorAll(".item-forum__text");
+        const maxLength = 360;
+        homeForumText.forEach((function(element) {
+            if (element.textContent.length > maxLength) element.textContent = element.textContent.substring(0, maxLength) + "...";
+        }));
+    }));
+    document.addEventListener("DOMContentLoaded", (function() {
+        const filtersTrade = document.querySelector("filters-trade");
+        if (filtersTrade) {
+            const filtersOpenButtons = document.querySelectorAll(".filters-trade__button");
+            const filtersBody = document.querySelector(".body-filters-trade");
+            const filtersBackButton = document.querySelector(".body-filters-trade__back");
+            filtersOpenButtons.forEach((function(button) {
+                button.addEventListener("click", (function() {
+                    filtersBody.classList.toggle("active");
+                    if (bodyLockStatus) bodyLockToggle();
+                }));
+            }));
+            filtersBackButton.addEventListener("click", (function() {
+                filtersBody.classList.remove("active");
+                bodyUnlock();
+            }));
+        }
+    }));
+    document.addEventListener("DOMContentLoaded", (function() {
+        const actions = document.querySelectorAll(".actions-menu");
+        actions.forEach((function(menu) {
+            const actionsIcon = menu.querySelector(".actions-menu__icon");
+            actionsIcon.addEventListener("click", (function(event) {
+                actions.forEach((function(otherMenu) {
+                    if (otherMenu !== menu) otherMenu.classList.remove("active");
+                }));
+                menu.classList.toggle("active");
+                event.stopPropagation();
+            }));
+            document.addEventListener("click", (function(event) {
+                if (!menu.contains(event.target)) menu.classList.remove("active");
             }));
         }));
-        filtersBackButton.addEventListener("click", (function() {
-            filtersBody.classList.remove("active");
-            bodyUnlock();
+    }));
+    const chatContent = document.querySelector(".block-body-chat");
+    if (chatContent) {
+        function scrollToBottom() {
+            chatContent.scrollTop = chatContent.scrollHeight;
+        }
+        scrollToBottom();
+    }
+    document.addEventListener("DOMContentLoaded", (event => {
+        const forumItems = document.querySelectorAll(".item-sections-forum");
+        forumItems.forEach((item => {
+            item.addEventListener("click", (() => {
+                forumItems.forEach((i => i.classList.remove("active")));
+                item.classList.add("active");
+            }));
         }));
+    }));
+    new SimpleMDE({
+        element: document.getElementById("editor")
+    });
+    document.addEventListener("DOMContentLoaded", (function() {
+        const commentMains = document.querySelectorAll(".comment-main");
+        commentMains.forEach((commentMain => {
+            const button = commentMain.querySelector(".answer-button__arrow");
+            if (button) button.addEventListener("click", (function() {
+                const answers = commentMain.querySelector(".answers-comment");
+                if (answers) {
+                    answers.classList.toggle("active");
+                    button.classList.toggle("active");
+                }
+            }));
+        }));
+    }));
+    document.addEventListener("DOMContentLoaded", (function() {
+        const moreButton = document.querySelector(".forum-comments__more");
+        const comments = document.querySelectorAll(".comment-main");
+        const forumCommentsBody = document.querySelector(".forum-comments__body");
+        moreButton.addEventListener("click", (function() {
+            if (forumCommentsBody.classList.contains("open")) {
+                forumCommentsBody.classList.remove("open");
+                moreButton.innerHTML = "<span>Дивитися ще</span>";
+                for (var i = 0; i < comments.length; i++) if (i >= 2) comments[i].classList.add("hidden");
+            } else {
+                forumCommentsBody.classList.add("open");
+                moreButton.innerHTML = "<span>Сховати</span>";
+                for (i = 0; i < comments.length; i++) comments[i].classList.remove("hidden");
+            }
+        }));
+        for (var i = 0; i < comments.length; i++) if (i >= 2) comments[i].classList.add("hidden");
     }));
     window["FLS"] = 0;
     isWebp();
     menuInit();
     spollers();
+    showMore();
 })();

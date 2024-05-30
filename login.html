@@ -6,10 +6,12 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20240520234754">
+	<link rel="stylesheet" href="css/style.min.css?_v=20240530190629">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css?_v=20240530190629">
+	<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js?_v=20240530190629"></script>
 </head>
 
 <body>
@@ -141,40 +143,175 @@
 			</div>
 		</footer>
 	</div>
-	<div id="popup-form" aria-hidden="true" class="popup-form popup">
-		<div class="popup__wrapper">
-			<div class="popup__content">
-				<div class="popup-form__body body-popup-form">
-					<!-- <button data-close type="button" class="popup__close">Закрити</button> -->
+	<!-- Стилі для body -->
+	<style>
+		.lock body {
 
-					<div class="body-popup-form__top">
-						<h3 class="body-popup-form__title">Якщо у Вас є зауваження чи пропозиції, напишіть нам!</h3>
-						<p class="body-popup-form__text">Ми працюємо над тим, щоб Вам було комфортно з нами!</p>
-					</div>
-					<form class="body-popup-form__form form-popup">
-						<div class="form-popup__block">
-							<div class="input-block">
-								<p>Імʼя</p>
-								<input autocomplete="off" type="text" name="form[]" placeholder="Імʼя" class="input">
-							</div>
-							<div class="input-block">
-								<p>Ваша пошта</p>
-								<input autocomplete="off" type="email" name="form[]" placeholder="Ваша пошта" class="input">
-							</div>
-							<div class="input-block">
-								<p>Повідомлення</p>
-								<textarea class="input form-popup__textarea" placeholder="Повідомлення"></textarea>
-							</div>
-						</div>
-						<button type="submit" class="form-popup__button button">Надіслати</button>
-					</form>
-				</div>
+			overflow: hidden;
+			touch-action: none;
+			overscroll-behavior: none;
+		}
 
-			</div>
-		</div>
+		.loading body {
+			opacity: 0;
+			visibility: hidden;
+		}
+
+		.loaded body {
+			transition: opacity 0.5s ease 0s;
+			opacity: 1;
+			visibility: visible;
+		}
+	</style>
+	<div id="preloader">
+		<style>
+			* {
+				padding: 0px;
+				margin: 0px;
+				border: 0px;
+			}
+
+			*,
+			*:before,
+			*:after {
+				box-sizing: border-box;
+			}
+
+			html {
+				overflow: hidden;
+				touch-action: none;
+				overscroll-behavior: none;
+			}
+
+			/* Головний блок */
+			.preloader {
+				pointer-events: none;
+				z-index: -1;
+				position: fixed;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				transition: opacity .3s ease;
+			}
+
+			/* Блок з елементами */
+			.preloader__body {
+				padding: 0.93rem;
+				max-width: 31.25rem;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				padding: 20px;
+			}
+
+			@keyframes fadeIn {
+				0% {
+					opacity: 0;
+				}
+
+				100% {
+					opacity: 1;
+				}
+			}
+
+			.loading .preloader__image {}
+
+			.preloader__image {
+				width: 50vw;
+				transition: opacity 1s ease;
+				animation: fadeIn 1s forwards;
+
+			}
+
+			.preloader__image img {
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+		<script>
+			function preloader() {
+				const preloaderImages = document.querySelector('[data-preloader]') ? document.querySelectorAll('[data-preloader] img') : document.querySelectorAll('img');
+				const preloaderContainer = document.querySelector('#preloader');
+				const image = document.querySelector('.preloader__image')
+				if (preloaderImages.length) {
+					const preloaderTemplate = `
+            <div class="preloader">
+                <div class="preloader__body">
+                    <div class="preloader__image">
+                        <img src="img/logo.svg" alt="Image">    
+                    </div>
+                </div>
+            </div>`;
+					document.querySelector('html').insertAdjacentHTML("beforeend", preloaderTemplate);
+
+					const preloader = document.querySelector('.preloader');
+
+					let imagesLoadedCount = 0;
+
+					document.documentElement.classList.add('loading');
+					document.documentElement.classList.add('lock');
+
+					preloaderImages.forEach(preloaderImage => {
+						const imgClone = document.createElement('img');
+						if (imgClone) {
+							imgClone.onload = imageLoaded;
+							imgClone.onerror = imageLoaded;
+							preloaderImage.dataset.src ? imgClone.src = preloaderImage.dataset.src : imgClone.src = preloaderImage.src;
+						}
+					});
+
+					function imageLoaded() {
+						imagesLoadedCount++;
+						if (imagesLoadedCount === preloaderImages.length) {
+							addLoadedClass();
+						}
+					}
+
+					function addLoadedClass() {
+						const minimumDuration = 2000;
+						const currentTime = new Date().getTime();
+						const elapsedTime = currentTime - startTime;
+
+						if (elapsedTime < minimumDuration) {
+							setTimeout(() => {
+								preloader.style.opacity = '0';
+
+								setTimeout(() => {
+									document.documentElement.classList.add('loaded');
+									document.documentElement.classList.remove('lock');
+									document.documentElement.classList.remove('loading');
+									preloader.remove();
+									preloaderContainer.remove();
+								}, 300);
+							}, minimumDuration - elapsedTime);
+						} else {
+							preloader.style.opacity = '0';
+							setTimeout(() => {
+								document.documentElement.classList.add('loaded');
+								document.documentElement.classList.remove('lock');
+								document.documentElement.classList.remove('loading');
+								preloader.remove();
+								preloaderContainer.remove();
+							}, 300);
+						}
+					}
+
+					const startTime = new Date().getTime();
+				} else {
+					preloaderContainer.remove();
+				}
+			}
+			preloader();
+		</script>
 	</div>
 
-	<script src="js/app.min.js?_v=20240520234754"></script>
+
+	<script src="js/app.min.js?_v=20240530190629"></script>
 </body>
 
 </html>

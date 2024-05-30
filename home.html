@@ -6,10 +6,12 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20240520234754">
+	<link rel="stylesheet" href="css/style.min.css?_v=20240530190629">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css?_v=20240530190629">
+	<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js?_v=20240530190629"></script>
 </head>
 
 <body>
@@ -23,11 +25,11 @@
 						<a href="#" class="body-header__logo logo">л<span>ого</span></a>
 						<div class="body-header__search search">
 							<input autocomplete="off" type="text" placeholder="Пошук по сайту" class="search__input">
-							<div class="search__icon-body">
+							<button class="search__icon-body">
 								<div class="search__icon">
 									<img src="img/icons/search.svg" alt="Icon">
 								</div>
-							</div>
+							</button>
 
 						</div>
 					</div>
@@ -630,7 +632,7 @@
 
 							<div class="adverts__pagination swiper-pagination"></div>
 
-							<button type="button" class="adverts-arrow adverts-arrow-prev">
+							<button type="button" class="swiper-button swiper-button-prev adverts-arrow-prev">
 								<svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<rect x="0.5" y="0.5" width="40" height="40" rx="3.5" fill="#1858B8" stroke="#1858B8" />
 									<path d="M24.5303 21.5303C24.8232 21.2374 24.8232 20.7626 24.5303 20.4697L19.7574 15.6967C19.4645 15.4038 18.9896 15.4038 18.6967 15.6967C18.4038 15.9896 18.4038 16.4645 18.6967 16.7574L22.9393 21L18.6967 25.2426C18.4038 25.5355 18.4038 26.0104 18.6967 26.3033C18.9896 26.5962 19.4645 26.5962 19.7574 26.3033L24.5303 21.5303ZM24 20.25H23V21.75H24V20.25Z" fill="white" />
@@ -638,7 +640,7 @@
 
 
 							</button>
-							<button type="button" class="adverts-arrow adverts-arrow-next">
+							<button type="button" class="swiper-button swiper-button-next adverts-arrow-next">
 								<svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<rect x="0.5" y="0.5" width="40" height="40" rx="3.5" fill="#1858B8" stroke="#1858B8" />
 									<path d="M24.5303 21.5303C24.8232 21.2374 24.8232 20.7626 24.5303 20.4697L19.7574 15.6967C19.4645 15.4038 18.9896 15.4038 18.6967 15.6967C18.4038 15.9896 18.4038 16.4645 18.6967 16.7574L22.9393 21L18.6967 25.2426C18.4038 25.5355 18.4038 26.0104 18.6967 26.3033C18.9896 26.5962 19.4645 26.5962 19.7574 26.3033L24.5303 21.5303ZM24 20.25H23V21.75H24V20.25Z" fill="white" />
@@ -656,41 +658,50 @@
 				<div class="home-forum__container">
 					<h2 class="home-forum__title title">Форум</h2>
 					<div class="home-forum__items">
-						<div class="home-forum__item item-home-forum">
-							<div class="item-home-forum__block">
-								<h4 class="item-home-forum__title">Ключові властивості полікарбонату</h4>
-								<p class="item-home-forum__text">Ключовими властивостями полікарбонату є висока прозорість, відносно мала вага та дуже висока ударна в'язкість... </p>
+						<div class="home-forum__item item-forum">
+							<div class="item-forum__body">
+
+								<div class="item-forum__block">
+									<h4 class="item-forum__title">Ключові властивості полікарбонату</h4>
+									<p class="item-forum__text">Ключовими властивостями полікарбонату є висока прозорість, відносно мала вага та дуже висока ударна в'язкість... </p>
+								</div>
+								<a href="#" class="item-forum__more">
+									<span>Детальніше</span>
+									<svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M0.46967 16.0263C0.176777 16.3192 0.176777 16.7941 0.46967 17.087C0.762563 17.3799 1.23744 17.3799 1.53033 17.087L0.46967 16.0263ZM16.75 1.55664C16.75 1.14243 16.4142 0.806641 16 0.806641L9.25 0.806641C8.83579 0.806641 8.5 1.14243 8.5 1.55664C8.5 1.97085 8.83579 2.30664 9.25 2.30664L15.25 2.30664L15.25 8.30664C15.25 8.72085 15.5858 9.05664 16 9.05664C16.4142 9.05664 16.75 8.72085 16.75 8.30664L16.75 1.55664ZM1.53033 17.087L16.5303 2.08697L15.4697 1.02631L0.46967 16.0263L1.53033 17.087Z" fill="#1858B8" />
+									</svg>
+								</a>
 							</div>
-							<a href="#" class="item-home-forum__more">
-								<span>Детальніше</span>
-								<svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M0.46967 16.0263C0.176777 16.3192 0.176777 16.7941 0.46967 17.087C0.762563 17.3799 1.23744 17.3799 1.53033 17.087L0.46967 16.0263ZM16.75 1.55664C16.75 1.14243 16.4142 0.806641 16 0.806641L9.25 0.806641C8.83579 0.806641 8.5 1.14243 8.5 1.55664C8.5 1.97085 8.83579 2.30664 9.25 2.30664L15.25 2.30664L15.25 8.30664C15.25 8.72085 15.5858 9.05664 16 9.05664C16.4142 9.05664 16.75 8.72085 16.75 8.30664L16.75 1.55664ZM1.53033 17.087L16.5303 2.08697L15.4697 1.02631L0.46967 16.0263L1.53033 17.087Z" fill="#1858B8" />
-								</svg>
-							</a>
 						</div>
-						<div class="home-forum__item item-home-forum">
-							<div class="item-home-forum__block">
-								<h4 class="item-home-forum__title">Ключові властивості полікарбонату</h4>
-								<p class="item-home-forum__text">Ключовими властивостями полікарбонату є висока прозорість, відносно мала вага та дуже висока ударна в'язкість... </p>
+						<div class="home-forum__item item-forum">
+							<div class="item-forum__body">
+
+								<div class="item-forum__block">
+									<h4 class="item-forum__title">Ключові властивості полікарбонату</h4>
+									<p class="item-forum__text">Ключовими властивостями полікарбонату є висока прозорість, відносно мала вага та дуже висока ударна в'язкість... </p>
+								</div>
+								<a href="#" class="item-forum__more">
+									<span>Детальніше</span>
+									<svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M0.46967 16.0263C0.176777 16.3192 0.176777 16.7941 0.46967 17.087C0.762563 17.3799 1.23744 17.3799 1.53033 17.087L0.46967 16.0263ZM16.75 1.55664C16.75 1.14243 16.4142 0.806641 16 0.806641L9.25 0.806641C8.83579 0.806641 8.5 1.14243 8.5 1.55664C8.5 1.97085 8.83579 2.30664 9.25 2.30664L15.25 2.30664L15.25 8.30664C15.25 8.72085 15.5858 9.05664 16 9.05664C16.4142 9.05664 16.75 8.72085 16.75 8.30664L16.75 1.55664ZM1.53033 17.087L16.5303 2.08697L15.4697 1.02631L0.46967 16.0263L1.53033 17.087Z" fill="#1858B8" />
+									</svg>
+								</a>
 							</div>
-							<a href="#" class="item-home-forum__more">
-								<span>Детальніше</span>
-								<svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M0.46967 16.0263C0.176777 16.3192 0.176777 16.7941 0.46967 17.087C0.762563 17.3799 1.23744 17.3799 1.53033 17.087L0.46967 16.0263ZM16.75 1.55664C16.75 1.14243 16.4142 0.806641 16 0.806641L9.25 0.806641C8.83579 0.806641 8.5 1.14243 8.5 1.55664C8.5 1.97085 8.83579 2.30664 9.25 2.30664L15.25 2.30664L15.25 8.30664C15.25 8.72085 15.5858 9.05664 16 9.05664C16.4142 9.05664 16.75 8.72085 16.75 8.30664L16.75 1.55664ZM1.53033 17.087L16.5303 2.08697L15.4697 1.02631L0.46967 16.0263L1.53033 17.087Z" fill="#1858B8" />
-								</svg>
-							</a>
 						</div>
-						<div class="home-forum__item item-home-forum">
-							<div class="item-home-forum__block">
-								<h4 class="item-home-forum__title">Ключові властивості полікарбонату</h4>
-								<p class="item-home-forum__text">Ключовими властивостями полікарбонату є висока прозорість, відносно мала вага та дуже висока ударна в'язкість... </p>
+						<div class="home-forum__item item-forum">
+							<div class="item-forum__body">
+
+								<div class="item-forum__block">
+									<h4 class="item-forum__title">Ключові властивості полікарбонату</h4>
+									<p class="item-forum__text">Ключовими властивостями полікарбонату є висока прозорість, відносно мала вага та дуже висока ударна в'язкість... </p>
+								</div>
+								<a href="#" class="item-forum__more">
+									<span>Детальніше</span>
+									<svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M0.46967 16.0263C0.176777 16.3192 0.176777 16.7941 0.46967 17.087C0.762563 17.3799 1.23744 17.3799 1.53033 17.087L0.46967 16.0263ZM16.75 1.55664C16.75 1.14243 16.4142 0.806641 16 0.806641L9.25 0.806641C8.83579 0.806641 8.5 1.14243 8.5 1.55664C8.5 1.97085 8.83579 2.30664 9.25 2.30664L15.25 2.30664L15.25 8.30664C15.25 8.72085 15.5858 9.05664 16 9.05664C16.4142 9.05664 16.75 8.72085 16.75 8.30664L16.75 1.55664ZM1.53033 17.087L16.5303 2.08697L15.4697 1.02631L0.46967 16.0263L1.53033 17.087Z" fill="#1858B8" />
+									</svg>
+								</a>
 							</div>
-							<a href="#" class="item-home-forum__more">
-								<span>Детальніше</span>
-								<svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M0.46967 16.0263C0.176777 16.3192 0.176777 16.7941 0.46967 17.087C0.762563 17.3799 1.23744 17.3799 1.53033 17.087L0.46967 16.0263ZM16.75 1.55664C16.75 1.14243 16.4142 0.806641 16 0.806641L9.25 0.806641C8.83579 0.806641 8.5 1.14243 8.5 1.55664C8.5 1.97085 8.83579 2.30664 9.25 2.30664L15.25 2.30664L15.25 8.30664C15.25 8.72085 15.5858 9.05664 16 9.05664C16.4142 9.05664 16.75 8.72085 16.75 8.30664L16.75 1.55664ZM1.53033 17.087L16.5303 2.08697L15.4697 1.02631L0.46967 16.0263L1.53033 17.087Z" fill="#1858B8" />
-								</svg>
-							</a>
 						</div>
 					</div>
 					<div class="home-forum__body body-home-forum">
@@ -778,6 +789,173 @@
 			</div>
 		</footer>
 	</div>
+	<!-- Стилі для body -->
+	<style>
+		.lock body {
+
+			overflow: hidden;
+			touch-action: none;
+			overscroll-behavior: none;
+		}
+
+		.loading body {
+			opacity: 0;
+			visibility: hidden;
+		}
+
+		.loaded body {
+			transition: opacity 0.5s ease 0s;
+			opacity: 1;
+			visibility: visible;
+		}
+	</style>
+	<div id="preloader">
+		<style>
+			* {
+				padding: 0px;
+				margin: 0px;
+				border: 0px;
+			}
+
+			*,
+			*:before,
+			*:after {
+				box-sizing: border-box;
+			}
+
+			html {
+				overflow: hidden;
+				touch-action: none;
+				overscroll-behavior: none;
+			}
+
+			/* Головний блок */
+			.preloader {
+				pointer-events: none;
+				z-index: -1;
+				position: fixed;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				transition: opacity .3s ease;
+			}
+
+			/* Блок з елементами */
+			.preloader__body {
+				padding: 0.93rem;
+				max-width: 31.25rem;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				padding: 20px;
+			}
+
+			@keyframes fadeIn {
+				0% {
+					opacity: 0;
+				}
+
+				100% {
+					opacity: 1;
+				}
+			}
+
+			.loading .preloader__image {}
+
+			.preloader__image {
+				width: 50vw;
+				transition: opacity 1s ease;
+				animation: fadeIn 1s forwards;
+
+			}
+
+			.preloader__image img {
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+		<script>
+			function preloader() {
+				const preloaderImages = document.querySelector('[data-preloader]') ? document.querySelectorAll('[data-preloader] img') : document.querySelectorAll('img');
+				const preloaderContainer = document.querySelector('#preloader');
+				const image = document.querySelector('.preloader__image')
+				if (preloaderImages.length) {
+					const preloaderTemplate = `
+            <div class="preloader">
+                <div class="preloader__body">
+                    <div class="preloader__image">
+                        <img src="img/logo.svg" alt="Image">    
+                    </div>
+                </div>
+            </div>`;
+					document.querySelector('html').insertAdjacentHTML("beforeend", preloaderTemplate);
+
+					const preloader = document.querySelector('.preloader');
+
+					let imagesLoadedCount = 0;
+
+					document.documentElement.classList.add('loading');
+					document.documentElement.classList.add('lock');
+
+					preloaderImages.forEach(preloaderImage => {
+						const imgClone = document.createElement('img');
+						if (imgClone) {
+							imgClone.onload = imageLoaded;
+							imgClone.onerror = imageLoaded;
+							preloaderImage.dataset.src ? imgClone.src = preloaderImage.dataset.src : imgClone.src = preloaderImage.src;
+						}
+					});
+
+					function imageLoaded() {
+						imagesLoadedCount++;
+						if (imagesLoadedCount === preloaderImages.length) {
+							addLoadedClass();
+						}
+					}
+
+					function addLoadedClass() {
+						const minimumDuration = 2000;
+						const currentTime = new Date().getTime();
+						const elapsedTime = currentTime - startTime;
+
+						if (elapsedTime < minimumDuration) {
+							setTimeout(() => {
+								preloader.style.opacity = '0';
+
+								setTimeout(() => {
+									document.documentElement.classList.add('loaded');
+									document.documentElement.classList.remove('lock');
+									document.documentElement.classList.remove('loading');
+									preloader.remove();
+									preloaderContainer.remove();
+								}, 300);
+							}, minimumDuration - elapsedTime);
+						} else {
+							preloader.style.opacity = '0';
+							setTimeout(() => {
+								document.documentElement.classList.add('loaded');
+								document.documentElement.classList.remove('lock');
+								document.documentElement.classList.remove('loading');
+								preloader.remove();
+								preloaderContainer.remove();
+							}, 300);
+						}
+					}
+
+					const startTime = new Date().getTime();
+				} else {
+					preloaderContainer.remove();
+				}
+			}
+			preloader();
+		</script>
+	</div>
+
 	<div id="popup-form" aria-hidden="true" class="popup-form popup">
 		<div class="popup__wrapper">
 			<div class="popup__content">
@@ -810,7 +988,7 @@
 			</div>
 		</div>
 	</div>
-	<script src="js/app.min.js?_v=20240520234754"></script>
+	<script src="js/app.min.js?_v=20240530190629"></script>
 </body>
 
 </html>
