@@ -6,12 +6,12 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20240530191901">
+	<link rel="stylesheet" href="css/style.min.css?_v=20240610123130">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css?_v=20240530191901">
-	<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js?_v=20240530191901"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css?_v=20240610123130">
+	<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js?_v=20240610123130"></script>
 </head>
 
 <body>
@@ -32,7 +32,26 @@
 
 							</div>
 							<div class="login__form form-login">
+								<div class="socials-auth">
+									<p class="socials-auth__text">Зареєструйтеся на сайті за допомогою облікового запису:</p>
+									<div class="socials-auth__body">
+
+										<a href="#" class="socials-auth__item item-socials-auth">
+											<div class="item-socials-auth__image">
+												<picture><source srcset="img/socials/google.webp" type="image/webp"><img src="img/socials/google.png" alt="Icon"></picture>
+											</div>
+											<div class="item-socials-auth__name">Google</div>
+										</a>
+										<a href="#" class="socials-auth__item item-socials-auth">
+											<div class="item-socials-auth__image">
+												<img src="img/socials/facebook.svg" alt="Icon">
+											</div>
+											<div class="item-socials-auth__name">Facebook</div>
+										</a>
+									</div>
+								</div>
 								<div class="form-login__block">
+									<p class="form-login__block-text">Або заповніть форму:</p>
 									<div class="input-block">
 										<p>Імʼя</p>
 										<input autocomplete="off" type="text" name="form[]" placeholder="Імʼя" class="form-login__input input">
@@ -69,23 +88,14 @@
 										<p>Повторіть пароль</p>
 										<input autocomplete="off" type="password" name="form[]" placeholder="Повторіть пароль" class="form-login__input input">
 									</div>
-
+									<label class="check">
+										<input type="checkbox" name="remember" class="real-checkbox">
+										<span class="custom-checkbox"></span>
+										Реєструючись на сайті я підтверджую, що ознайомлений і згоден з умовами Угоди користувача та Політикою конфіденційності і використання файлів cookie
+									</label>
 								</div>
 
-								<div class="socials-auth">
-									<a href="#" class="socials-auth__item item-socials-auth">
-										<div class="item-socials-auth__image">
-											<picture><source srcset="img/socials/google.webp" type="image/webp"><img src="img/socials/google.png" alt="Icon"></picture>
-										</div>
-										<div class="item-socials-auth__name">Google</div>
-									</a>
-									<a href="#" class="socials-auth__item item-socials-auth">
-										<div class="item-socials-auth__image">
-											<img src="img/socials/facebook.svg" alt="Icon">
-										</div>
-										<div class="item-socials-auth__name">Facebook</div>
-									</a>
-								</div>
+
 								<a href="#" class="form-login__button button">Зареєструватися</a>
 							</div>
 						</div>
@@ -332,7 +342,7 @@
 	</div>
 
 
-	<script src="js/app.min.js?_v=20240530191901"></script>
+	<script src="js/app.min.js?_v=20240610123130"></script>
 </body>
 
 </html>
