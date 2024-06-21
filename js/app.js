@@ -4666,7 +4666,7 @@
             modules: [ Navigation, Pagination ],
             observer: true,
             observeParents: true,
-            slidesPerView: 1.3,
+            slidesPerView: "1",
             spaceBetween: 20,
             speed: 800,
             pagination: {
@@ -4685,7 +4685,7 @@
                     slidesPerView: "3"
                 },
                 991.98: {
-                    slidesPerView: "5",
+                    slidesPerView: "4",
                     enabled: false,
                     pagination: false
                 }
@@ -4708,8 +4708,8 @@
                 nextEl: ".adverts-arrow-next"
             },
             breakpoints: {
-                767.98: {
-                    slidesPerView: "2"
+                375: {
+                    slidesPerView: "auto"
                 },
                 991.98: {
                     slidesPerView: "3"
@@ -4912,16 +4912,15 @@
         }));
     }));
     document.addEventListener("DOMContentLoaded", (function() {
-        const filtersTrade = document.querySelector("filters-trade");
-        if (filtersTrade) {
-            const filtersOpenButtons = document.querySelectorAll(".filters-trade__button");
-            const filtersBody = document.querySelector(".body-filters-trade");
-            const filtersBackButton = document.querySelector(".body-filters-trade__back");
-            filtersOpenButtons.forEach((function(button) {
-                button.addEventListener("click", (function() {
-                    filtersBody.classList.toggle("active");
-                    if (bodyLockStatus) bodyLockToggle();
-                }));
+        document.querySelector("filters-trade");
+        const filtersOpenButton = document.querySelector(".filters-trade__button");
+        const filtersBody = document.querySelector(".body-filters-trade");
+        const filtersBackButton = document.querySelector(".body-filters-trade__back");
+        if (filtersBody) {
+            filtersOpenButton.addEventListener("click", (function() {
+                console.log("aaaaa");
+                filtersBody.classList.toggle("active");
+                if (bodyLockStatus) bodyLockToggle();
             }));
             filtersBackButton.addEventListener("click", (function() {
                 filtersBody.classList.remove("active");
@@ -4981,18 +4980,28 @@
         const moreButton = document.querySelector(".forum-comments__more");
         const comments = document.querySelectorAll(".comment-main");
         const forumCommentsBody = document.querySelector(".forum-comments__body");
-        moreButton.addEventListener("click", (function() {
-            if (forumCommentsBody.classList.contains("open")) {
-                forumCommentsBody.classList.remove("open");
-                moreButton.innerHTML = "<span>Дивитися ще</span>";
-                for (var i = 0; i < comments.length; i++) if (i >= 2) comments[i].classList.add("hidden");
-            } else {
-                forumCommentsBody.classList.add("open");
-                moreButton.innerHTML = "<span>Сховати</span>";
-                for (i = 0; i < comments.length; i++) comments[i].classList.remove("hidden");
-            }
+        if (moreButton) {
+            moreButton.addEventListener("click", (function() {
+                if (forumCommentsBody.classList.contains("open")) {
+                    forumCommentsBody.classList.remove("open");
+                    moreButton.innerHTML = "<span>Дивитися ще</span>";
+                    for (var i = 0; i < comments.length; i++) if (i >= 2) comments[i].classList.add("hidden");
+                } else {
+                    forumCommentsBody.classList.add("open");
+                    moreButton.innerHTML = "<span>Сховати</span>";
+                    for (i = 0; i < comments.length; i++) comments[i].classList.remove("hidden");
+                }
+            }));
+            for (var i = 0; i < comments.length; i++) if (i >= 2) comments[i].classList.add("hidden");
+        }
+    }));
+    document.addEventListener("DOMContentLoaded", (function() {
+        const primaryRaw = document.getElementById("primary-raw");
+        const primaryCheckbox = primaryRaw.querySelector('input[type="checkbox"]');
+        const primaryRawItems = document.querySelector(".item-filter__block--primary");
+        primaryCheckbox.addEventListener("change", (function() {
+            if (primaryCheckbox.checked) primaryRawItems.classList.add("active"); else primaryRawItems.classList.remove("active");
         }));
-        for (var i = 0; i < comments.length; i++) if (i >= 2) comments[i].classList.add("hidden");
     }));
     window["FLS"] = 0;
     isWebp();
